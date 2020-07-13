@@ -261,6 +261,7 @@ impl VectorFactory {
         let tx = Tx::new_with(inputs.clone(), outputs.clone(), attributes);
         let tx_id = tx.id();
         let proof = TestVectorWallet::gen_proof(public_key)?.unwrap();
+        // FIXME: schnorr sign is non-deterministic -- used a fixed randomness
         let witness: TxWitness = vec![TxInWitness::TreeSig(
             sign_key.schnorr_sign(&Transaction::TransferTransaction(tx.clone()))?,
             proof,

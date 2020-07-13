@@ -80,6 +80,7 @@ pub mod tests {
                 &secp,
                 &Message::from_slice(&transation.id()).unwrap(),
                 &secret_key,
+                &mut rand::thread_rng(),
             ),
             merkle_tree
                 .generate_proof(RawXOnlyPubkey::from(public_key.serialize()))
@@ -115,6 +116,7 @@ pub mod tests {
                 &secp,
                 &Message::from_slice(&transation.id()).unwrap(),
                 &secret_keys[0],
+                &mut rand::thread_rng(),
             ),
             merkle_tree
                 .generate_proof(RawXOnlyPubkey::from(public_keys[0].serialize()))
@@ -150,6 +152,7 @@ pub mod tests {
                 &secp,
                 &Message::from_slice(&transation.id()).unwrap(),
                 &secret_keys[0],
+                &mut rand::thread_rng(),
             ),
             merkle_tree
                 .generate_proof(RawXOnlyPubkey::from(public_keys[1].serialize()))
